@@ -1,0 +1,188 @@
+/* /eln/ - Elsinore : the whole stylesheet for the board.
+   Early-2000s imageboard look. Light mode only. No JavaScript anywhere. */
+
+:root {
+  --bg: #FFFFEE;           /* page background */
+  --text: #800000;         /* main text, maroon */
+  --reply-bg: #F0E0D6;     /* reply boxes */
+  --reply-border: #D9BFB7;
+  --name: #117743;         /* poster names and tripcodes, bold */
+  --subject: #CC1105;      /* thread subjects, bold */
+  --greentext: #789922;
+  --link: #34345C;
+  --link-hover: #DD0000;
+  --capcode: #FF0000;      /* "## Analysis" and mod messages */
+  --analysis-bg: #F7E9D0;  /* analysis post box */
+  --banner-bg: #800000;    /* archived / locked banners */
+  --banner-text: #FFFFEE;
+  --cite: #9A6A6A;         /* the small "(quoted, 1.3)" labels */
+  --muted: #707070;        /* "no replies" lines */
+}
+
+/* ---------- page ---------- */
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 8px 10px 30px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+a { color: var(--link); text-decoration: underline; }
+a:hover { color: var(--link-hover); }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--reply-border);
+  margin: 12px 0;
+}
+
+/* ---------- header and footer ---------- */
+
+.topbar { font-size: 12px; margin-bottom: 14px; }
+
+.boardtitle {
+  font-family: tahoma, arial, sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text);
+  text-align: center;
+  margin: 0;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  font-style: italic;
+  margin: 2px 0 0;
+}
+
+.footer { font-size: 12px; text-align: center; }
+
+/* ---------- parts every post shares ---------- */
+
+.posthead { margin: 0 0 4px; }
+
+.checkbox {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--reply-border);
+  background: #FFFFFF;
+  vertical-align: -1px;
+  margin-right: 4px;
+}
+
+.subject   { font-weight: bold; color: var(--subject); }
+.name      { font-weight: bold; color: var(--name); }
+.trip      { font-weight: bold; color: var(--name); }
+.capcode   { font-weight: bold; color: var(--capcode); }
+.postinfo  { font-size: 12px; }
+.cite      { font-size: 11px; color: var(--cite); }
+.greentext { color: var(--greentext); }
+
+q { quotes: "\201C" "\201D"; }
+
+.flowerline { font-style: italic; margin: 10px 0 0; }
+
+/* ---------- opening post: no box, sits on the page ---------- */
+
+.op { margin: 0 0 14px; }
+.op p { margin: 8px 0; }
+
+/* ---------- replies: peach boxes stacked down the page ---------- */
+
+.replyrow {
+  display: flex;
+  align-items: flex-start;
+  margin: 4px 0 4px 10px;
+}
+
+.arrow { margin-right: 4px; white-space: nowrap; }
+
+.reply {
+  background: var(--reply-bg);
+  border-right: 1px solid var(--reply-border);
+  border-bottom: 1px solid var(--reply-border);
+  padding: 5px 10px 7px;
+  min-width: 0;
+}
+
+.reply p { margin: 4px 0; }
+
+/* analysis post: same box, different colour */
+.reply.analysis { background: var(--analysis-bg); }
+
+/* the grey line under Ophelia's unanswered post in 3.1 */
+.noreplies {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 4px 0 14px 10px;
+}
+
+/* ---------- banners and notices ---------- */
+
+.banner {
+  background: var(--banner-bg);
+  color: var(--banner-text);
+  font-weight: bold;
+  text-align: center;
+  padding: 6px 8px;
+  margin: 0 0 12px;
+}
+
+.locked {
+  color: var(--capcode);
+  font-weight: bold;
+  margin: 6px 0 14px 10px;
+}
+
+.stickylabel {
+  font-size: 11px;
+  font-weight: bold;
+  border: 1px solid var(--reply-border);
+  padding: 0 4px;
+  margin-right: 4px;
+}
+
+/* ---------- the madness thread (4.5) ---------- */
+
+.mad p { margin: 3px 0; }
+.i1 { margin-left: 14px; }
+.i2 { margin-left: 38px; }
+.i3 { margin-left: 62px; }
+.i4 { margin-left: 26px; }
+
+/* ---------- flower key table ---------- */
+
+.flowerkey {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+.flowerkey th, .flowerkey td {
+  border: 1px solid var(--reply-border);
+  padding: 3px 6px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.flowerkey th { background: var(--reply-bg); }
+
+/* ---------- phones ---------- */
+
+@media (max-width: 420px) {
+  .boardtitle { font-size: 21px; }
+  .replyrow { margin-left: 0; }
+  .reply { padding: 5px 7px 7px; }
+  .i1, .i2, .i3, .i4 { margin-left: 10px; }
+  .flowerkey { font-size: 11px; }
+}
